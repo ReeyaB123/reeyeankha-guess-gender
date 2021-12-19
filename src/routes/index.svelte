@@ -1,2 +1,21 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    let username = "";
+    let gender = "";
+    async function getGender() {
+  fetch('https://api.genderize.io/?name=' + username)
+	.then((response) => response.json())
+	.then((data) => {
+  	username = data.name; // Path for temperature
+  	gender = data.gender; // Path for description
+	});
+}
+</script>
+<h1>Guess Gender</h1>
+
+<form on:submit|preventDefault={getGender}>
+    <label for="name">Name:</label>
+    <input id="username" bind:value={username} type="text" />
+    <button type="submit">Check</button>
+</form>
+
+<p>Gender: {gender}</p>
