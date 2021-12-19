@@ -5,8 +5,8 @@
   fetch('https://api.genderize.io/?name=' + username)
 	.then((response) => response.json())
 	.then((data) => {
-  	username = data.name; // Path for temperature
-  	gender = data.gender; // Path for description
+  	username = data.name; // Path for name
+  	gender = data.gender; // Path for gender
 	});
 }
 </script>
